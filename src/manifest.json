@@ -1,16 +1,36 @@
 {
-  "name": "Chrome Extension Webpack",
+  "name": "ottomatt",
+  "version": "0.0.3",
+  "manifest_version": 3,
   "options_page": "options.html",
-  "background": {
-    "page": "background.html"
-  },
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
-  },
+  "action": {"default_popup": "popup.html"},
+  "permissions": [
+    "contextMenus"
+  ],  
   "icons": {
-    "128": "icon-128.png"
+    "16": "img/icon-16.png"
   },
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts" : [
+    {
+      "js": [
+        "js/content_funcaps.js"
+      ],
+      "matches": [
+        "https://funcaps.com/shipping/tracking/*"
+        
+      ]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "js_content_all.js"
+      ]
+    }
+  ]
 }
