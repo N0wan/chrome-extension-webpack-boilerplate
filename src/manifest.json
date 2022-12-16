@@ -29,7 +29,7 @@
       ],
       "run_at": "document_idle",
       "js": [
-        "js_content_all.js"
+        "js/content_all.js"
       ]
     }
   ]
